@@ -60,7 +60,7 @@ func main() {
 
 func parseLogEntry(line string) *LogEntry {
 	// 定义正则表达式匹配日志格式
-	re := regexp.MustCompile(`Calling (.+) from (.+) at (.+), arguments:(.+), result:(.+)`)
+	re := regexp.MustCompile(`Calling (.+) from (.+) at (.+), arguments:(.+), returns:(.+)`)
 	matches := re.FindStringSubmatch(line)
 	if len(matches) != 6 {
 		return nil
