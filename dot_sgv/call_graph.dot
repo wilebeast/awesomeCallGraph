@@ -1,3 +1,13 @@
 digraph G {
+  edge [fontsize=10, penwidth=2];
 "ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[1]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[2]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[3]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[4]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[5]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[6]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[7]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[8]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[9]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExec" [label="call1[1]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
 }
