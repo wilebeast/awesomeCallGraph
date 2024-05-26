@@ -11,6 +11,7 @@ import (
 type LogEntry struct {
 	CalledFunction  string
 	CallingFunction string
+	CallingPosition string
 	Arguments       string
 	Results         string
 }
@@ -59,17 +60,18 @@ func main() {
 
 func parseLogEntry(line string) *LogEntry {
 	// 定义正则表达式匹配日志格式
-	re := regexp.MustCompile(`Calling (.+) from (.+) at .+, arguments:(.+), result:(.+)`)
+	re := regexp.MustCompile(`Calling (.+) from (.+) at (.+), arguments:(.+), result:(.+)`)
 	matches := re.FindStringSubmatch(line)
-	if len(matches) != 5 {
+	if len(matches) != 6 {
 		return nil
 	}
 
 	logEntry := &LogEntry{
 		CalledFunction:  matches[1],
 		CallingFunction: matches[2],
-		Arguments:       matches[3],
-		Results:         matches[4],
+		CallingPosition: matches[3],
+		Arguments:       matches[4],
+		Results:         matches[5],
 	}
 
 	return logEntry
