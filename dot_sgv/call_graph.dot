@@ -1,0 +1,3 @@
+digraph G {
+"ruleplatform.(*Event).ExecuteOptimized" -> "ruleplatform.(*Event).getEventExecStatus" [label="call9[1]", tooltip="{\n    \"arguments\": \"{\\\"ut\\\":12}}\",\n    \"result\": \"{\\\"X1\\\":1}\"\n}"]
+}

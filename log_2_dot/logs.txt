@@ -1,0 +1,10 @@
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExecStatus from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
+Calling ruleplatform.(*Event).getEventExec from ruleplatform.(*Event).ExecuteOptimized at event.go:1327, arguments:{"ut":12}}, result:{"X1":1}
