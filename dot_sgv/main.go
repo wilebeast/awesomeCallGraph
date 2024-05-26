@@ -43,13 +43,23 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 
         document.addEventListener('DOMContentLoaded', function() {
             var svg = document.querySelector('svg');
-            svg.addEventListener('dblclick', function(event) {
-                var target = event.target;
-                if (target.tagName.toLowerCase() === 'path') {
-                    var tooltip = target.getAttribute('tooltip');
-                    copyToClipboard(tooltip);
-                }
-            });
+      		// 遍历 SVG 文档中的所有 <a> 元素(包含 tooltip 的链接)
+      		var links = svg.getElementsByTagName('a');
+      		for (var i = 0; i < links.length; i++) {
+      		  var link = links[i];
+
+      		  // 为每个 <a> 元素添加双击事件监听器
+      		  link.addEventListener('dblclick', function() {
+      		    // 从 'xlink:title' 属性中获取 tooltip 文本内容
+      		    var tooltipText = this.getAttribute('xlink:title');
+      		    if (tooltipText) {
+      		      // 将内容复制到剪贴板
+      		      navigator.clipboard.writeText(tooltipText);
+      		      alert('Tooltip copied to clipboard!');
+      		    }
+      		  });
+      		}
+
         });
     </script>
 </head>
