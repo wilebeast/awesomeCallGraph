@@ -28,6 +28,7 @@ func main() {
 
 	// 逐行读取日志文件并解析
 	scanner := bufio.NewScanner(file)
+	scanner.Buffer(make([]byte, 0, 64*1024), 1024*1024) // 将缓冲区大小设置为 64 MB
 	for scanner.Scan() {
 		line := scanner.Text()
 		logEntry := parseLogEntry(line)

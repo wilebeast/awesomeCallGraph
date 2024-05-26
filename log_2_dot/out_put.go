@@ -16,7 +16,7 @@ func outputDotFile(callGraph map[string]map[string][]LogEntry) {
 
 	// 输出 dot 文件头
 	fmt.Fprintln(file, "digraph G {")
-	fmt.Fprintln(file, "  edge [fontsize=10, penwidth=2];")
+	fmt.Fprintln(file, "  edge [fontsize=10, penwidth=4];")
 
 	// 遍历调用关系并输出
 	for callingFunction, calledFunctions := range callGraph {
