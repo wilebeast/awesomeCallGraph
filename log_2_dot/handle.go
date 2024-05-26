@@ -23,7 +23,6 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
     <script>
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
-                console.log('Async: Copying to clipboard was successful!');
             }, function(err) {
                 console.error('Async: Could not copy text: ', err);
             });
@@ -43,7 +42,6 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
       		    if (tooltipText) {
       		      // 将内容复制到剪贴板
       		      navigator.clipboard.writeText(tooltipText);
-      		      alert('Tooltip copied to clipboard!');
       		    }
       		  });
       		}

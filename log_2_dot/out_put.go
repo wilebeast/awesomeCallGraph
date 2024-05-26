@@ -23,7 +23,7 @@ func outputDotFile(callGraph map[string]map[string][]LogEntry) {
 		for calledFunction, logEntries := range calledFunctions {
 			label := fmt.Sprintf("call%d", len(logEntries))
 			for i, logEntry := range logEntries {
-				tooltip := marshal2String(map[string]interface{}{"arguments": logEntry.Arguments, "result": logEntry.Results})
+				tooltip := marshal2String(map[string]interface{}{"arguments": unmarshal2map(logEntry.Arguments), "result": unmarshal2map(logEntry.Results)})
 				//tooltip := fmt.Sprintf("%s", json.Marshal(map[string]interface{}{"arguments": logEntry.Arguments, "result": logEntry.Results}))
 				fmt.Fprintf(file, `"%s" -> "%s" [label="%s[%d]@%s", tooltip=%s]`+"\n",
 					callingFunction, calledFunction, label, i+1, logEntry.CallingPosition, marshal2String(tooltip))

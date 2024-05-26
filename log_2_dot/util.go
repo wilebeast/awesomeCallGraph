@@ -9,3 +9,12 @@ func marshal2String(v interface{}) string {
 	}
 	return string(bytes)
 }
+
+func unmarshal2map(in string) map[string]interface{} {
+	out := make(map[string]interface{})
+	err := json.Unmarshal([]byte(in), &out)
+	if err != nil {
+		return nil
+	}
+	return out
+}
