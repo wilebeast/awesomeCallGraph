@@ -1,10 +1,10 @@
 digraph G {
-  edge [fontsize=10, penwidth=2];
-"govaluate.EvaluableExpression.Evaluate" -> "govaluate.EvaluableExpression.Eval" [label="call1[1]@EvaluableExpression.go:161", tooltip="{\n    \"arguments\": {\n        \"parameters\": {}\n    },\n    \"result\": {\n        \"X1\": 4001,\n        \"X2\": null\n    }\n}"]
-"govaluate.TestStructFunctions" -> "govaluate.EvaluableExpression.Evaluate" [label="call1[1]@evaluation_test.go:1460", tooltip="{\n    \"arguments\": {\n        \"parameters\": null\n    },\n    \"result\": {\n        \"X1\": 4001,\n        \"X2\": null\n    }\n}"]
+  edge [fontsize=10, penwidth=4];
 "govaluate.EvaluableExpression.evaluateStage" -> "govaluate.EvaluableExpression.evaluateStage" [label="call4[1]@EvaluableExpression.go:227", tooltip="{\n    \"arguments\": {\n        \"parameters\": {},\n        \"stage\": {}\n    },\n    \"result\": {\n        \"X1\": null,\n        \"X2\": null\n    }\n}"]
 "govaluate.EvaluableExpression.evaluateStage" -> "govaluate.EvaluableExpression.evaluateStage" [label="call4[2]@EvaluableExpression.go:194", tooltip="{\n    \"arguments\": {\n        \"parameters\": {},\n        \"stage\": {}\n    },\n    \"result\": {\n        \"X1\": 2000,\n        \"X2\": null\n    }\n}"]
 "govaluate.EvaluableExpression.evaluateStage" -> "govaluate.EvaluableExpression.evaluateStage" [label="call4[3]@EvaluableExpression.go:227", tooltip="{\n    \"arguments\": {\n        \"parameters\": {},\n        \"stage\": {}\n    },\n    \"result\": {\n        \"X1\": null,\n        \"X2\": null\n    }\n}"]
 "govaluate.EvaluableExpression.evaluateStage" -> "govaluate.EvaluableExpression.evaluateStage" [label="call4[4]@EvaluableExpression.go:227", tooltip="{\n    \"arguments\": {\n        \"parameters\": {},\n        \"stage\": {}\n    },\n    \"result\": {\n        \"X1\": 2001,\n        \"X2\": null\n    }\n}"]
 "govaluate.EvaluableExpression.Eval" -> "govaluate.EvaluableExpression.evaluateStage" [label="call1[1]@EvaluableExpression.go:182", tooltip="{\n    \"arguments\": {\n        \"parameters\": {},\n        \"stage\": {}\n    },\n    \"result\": {\n        \"X1\": 4001,\n        \"X2\": null\n    }\n}"]
+"govaluate.EvaluableExpression.Evaluate" -> "govaluate.EvaluableExpression.Eval" [label="call1[1]@EvaluableExpression.go:161", tooltip="{\n    \"arguments\": {\n        \"parameters\": {}\n    },\n    \"result\": {\n        \"X1\": 4001,\n        \"X2\": null\n    }\n}"]
+"govaluate.TestStructFunctions" -> "govaluate.EvaluableExpression.Evaluate" [label="call1[1]@evaluation_test.go:1460", tooltip="{\n    \"arguments\": {\n        \"parameters\": null\n    },\n    \"result\": {\n        \"X1\": 4001,\n        \"X2\": null\n    }\n}"]
 }

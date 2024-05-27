@@ -9,11 +9,51 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 289.75)">
 <title>G</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-289.75 1070.68,-289.75 1070.68,4 -4,4"/>
-<!-- govaluate.EvaluableExpression.Evaluate -->
+<!-- govaluate.EvaluableExpression.evaluateStage -->
 <g id="node1" class="node">
-<title>govaluate.EvaluableExpression.Evaluate</title>
-<ellipse fill="none" stroke="black" cx="180.84" cy="-184.5" rx="161.9" ry="18"/>
-<text text-anchor="middle" x="180.84" y="-179.45" font-family="Times,serif" font-size="14.00">govaluate.EvaluableExpression.Evaluate</text>
+<title>govaluate.EvaluableExpression.evaluateStage</title>
+<ellipse fill="none" stroke="black" cx="180.84" cy="-18" rx="180.84" ry="18"/>
+<text text-anchor="middle" x="180.84" y="-12.95" font-family="Times,serif" font-size="14.00">govaluate.EvaluableExpression.evaluateStage</text>
+</g>
+<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
+<g id="edge1" class="edge">
+<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
+<g id="a_edge1"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: null,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
+<path fill="none" stroke="black" stroke-width="4" d="M361.58,-19.37C372.87,-19.05 379.68,-18.59 379.68,-18 379.68,-17.8 378.87,-17.61 377.36,-17.44"/>
+<polygon fill="black" stroke="black" stroke-width="4" points="377.79,-13.96 367.62,-16.94 377.43,-20.95 377.79,-13.96"/>
+</a>
+</g>
+<text text-anchor="middle" x="458.8" y="-14.12" font-family="Times,serif" font-size="10.00">call4[1]@EvaluableExpression.go:227</text>
+</g>
+<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
+<g id="edge2" class="edge">
+<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
+<g id="a_edge2"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 2000,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
+<path fill="none" stroke="black" stroke-width="4" d="M358.01,-21.85C449.06,-22.19 537.93,-20.91 537.93,-18 537.93,-15.26 459.17,-13.97 373.97,-14.11"/>
+<polygon fill="black" stroke="black" stroke-width="4" points="374.05,-10.61 364.06,-14.13 374.07,-17.61 374.05,-10.61"/>
+</a>
+</g>
+<text text-anchor="middle" x="617.05" y="-14.12" font-family="Times,serif" font-size="10.00">call4[2]@EvaluableExpression.go:194</text>
+</g>
+<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
+<g id="edge3" class="edge">
+<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
+<g id="a_edge3"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: null,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
+<path fill="none" stroke="black" stroke-width="4" d="M354.4,-23.26C506.27,-24.9 696.18,-23.14 696.18,-18 696.18,-13.03 519.03,-11.23 370.09,-12.58"/>
+<polygon fill="black" stroke="black" stroke-width="4" points="370.41,-9.08 360.45,-12.68 370.48,-16.08 370.41,-9.08"/>
+</a>
+</g>
+<text text-anchor="middle" x="775.3" y="-14.12" font-family="Times,serif" font-size="10.00">call4[3]@EvaluableExpression.go:227</text>
+</g>
+<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
+<g id="edge4" class="edge">
+<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
+<g id="a_edge4"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 2001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
+<path fill="none" stroke="black" stroke-width="4" d="M350.76,-24.36C553.29,-27.56 854.43,-25.44 854.43,-18 854.43,-10.75 568.67,-8.55 366.68,-11.4"/>
+<polygon fill="black" stroke="black" stroke-width="4" points="366.76,-7.9 356.81,-11.55 366.87,-14.9 366.76,-7.9"/>
+</a>
+</g>
+<text text-anchor="middle" x="933.55" y="-14.12" font-family="Times,serif" font-size="10.00">call4[4]@EvaluableExpression.go:227</text>
 </g>
 <!-- govaluate.EvaluableExpression.Eval -->
 <g id="node2" class="node">
@@ -21,87 +61,47 @@
 <ellipse fill="none" stroke="black" cx="180.84" cy="-101.25" rx="146.55" ry="18"/>
 <text text-anchor="middle" x="180.84" y="-96.2" font-family="Times,serif" font-size="14.00">govaluate.EvaluableExpression.Eval</text>
 </g>
-<!-- govaluate.EvaluableExpression.Evaluate&#45;&gt;govaluate.EvaluableExpression.Eval -->
-<g id="edge1" class="edge">
-<title>govaluate.EvaluableExpression.Evaluate&#45;&gt;govaluate.EvaluableExpression.Eval</title>
-<g id="a_edge1"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 4001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
-<path fill="none" stroke="black" stroke-width="2" d="M180.84,-166.27C180.84,-156.53 180.84,-144.08 180.84,-132.74"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="184.34,-132.76 180.84,-122.76 177.34,-132.76 184.34,-132.76"/>
-</a>
-</g>
-<text text-anchor="middle" x="259.96" y="-139" font-family="Times,serif" font-size="10.00">call1[1]@EvaluableExpression.go:161</text>
-</g>
-<!-- govaluate.EvaluableExpression.evaluateStage -->
-<g id="node4" class="node">
-<title>govaluate.EvaluableExpression.evaluateStage</title>
-<ellipse fill="none" stroke="black" cx="180.84" cy="-18" rx="180.84" ry="18"/>
-<text text-anchor="middle" x="180.84" y="-12.95" font-family="Times,serif" font-size="14.00">govaluate.EvaluableExpression.evaluateStage</text>
-</g>
 <!-- govaluate.EvaluableExpression.Eval&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
-<g id="edge7" class="edge">
+<g id="edge5" class="edge">
 <title>govaluate.EvaluableExpression.Eval&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
-<g id="a_edge7"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 4001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
-<path fill="none" stroke="black" stroke-width="2" d="M180.84,-83.02C180.84,-73.28 180.84,-60.83 180.84,-49.49"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="184.34,-49.51 180.84,-39.51 177.34,-49.51 184.34,-49.51"/>
+<g id="a_edge5"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 4001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
+<path fill="none" stroke="black" stroke-width="4" d="M180.84,-83.02C180.84,-74.14 180.84,-63 180.84,-52.51"/>
+<polygon fill="black" stroke="black" stroke-width="4" points="184.34,-52.54 180.84,-42.54 177.34,-52.54 184.34,-52.54"/>
 </a>
 </g>
 <text text-anchor="middle" x="259.96" y="-55.75" font-family="Times,serif" font-size="10.00">call1[1]@EvaluableExpression.go:182</text>
 </g>
-<!-- govaluate.TestStructFunctions -->
+<!-- govaluate.EvaluableExpression.Evaluate -->
 <g id="node3" class="node">
+<title>govaluate.EvaluableExpression.Evaluate</title>
+<ellipse fill="none" stroke="black" cx="180.84" cy="-184.5" rx="161.9" ry="18"/>
+<text text-anchor="middle" x="180.84" y="-179.45" font-family="Times,serif" font-size="14.00">govaluate.EvaluableExpression.Evaluate</text>
+</g>
+<!-- govaluate.EvaluableExpression.Evaluate&#45;&gt;govaluate.EvaluableExpression.Eval -->
+<g id="edge6" class="edge">
+<title>govaluate.EvaluableExpression.Evaluate&#45;&gt;govaluate.EvaluableExpression.Eval</title>
+<g id="a_edge6"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 4001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
+<path fill="none" stroke="black" stroke-width="4" d="M180.84,-166.27C180.84,-157.39 180.84,-146.25 180.84,-135.76"/>
+<polygon fill="black" stroke="black" stroke-width="4" points="184.34,-135.79 180.84,-125.79 177.34,-135.79 184.34,-135.79"/>
+</a>
+</g>
+<text text-anchor="middle" x="259.96" y="-139" font-family="Times,serif" font-size="10.00">call1[1]@EvaluableExpression.go:161</text>
+</g>
+<!-- govaluate.TestStructFunctions -->
+<g id="node4" class="node">
 <title>govaluate.TestStructFunctions</title>
 <ellipse fill="none" stroke="black" cx="180.84" cy="-267.75" rx="123.52" ry="18"/>
 <text text-anchor="middle" x="180.84" y="-262.7" font-family="Times,serif" font-size="14.00">govaluate.TestStructFunctions</text>
 </g>
 <!-- govaluate.TestStructFunctions&#45;&gt;govaluate.EvaluableExpression.Evaluate -->
-<g id="edge2" class="edge">
+<g id="edge7" class="edge">
 <title>govaluate.TestStructFunctions&#45;&gt;govaluate.EvaluableExpression.Evaluate</title>
-<g id="a_edge2"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: null&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 4001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
-<path fill="none" stroke="black" stroke-width="2" d="M180.84,-249.52C180.84,-239.78 180.84,-227.33 180.84,-215.99"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="184.34,-216.01 180.84,-206.01 177.34,-216.01 184.34,-216.01"/>
+<g id="a_edge7"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: null&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 4001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
+<path fill="none" stroke="black" stroke-width="4" d="M180.84,-249.52C180.84,-240.64 180.84,-229.5 180.84,-219.01"/>
+<polygon fill="black" stroke="black" stroke-width="4" points="184.34,-219.04 180.84,-209.04 177.34,-219.04 184.34,-219.04"/>
 </a>
 </g>
 <text text-anchor="middle" x="250.96" y="-222.25" font-family="Times,serif" font-size="10.00">call1[1]@evaluation_test.go:1460</text>
-</g>
-<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
-<g id="edge3" class="edge">
-<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
-<g id="a_edge3"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: null,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
-<path fill="none" stroke="black" stroke-width="2" d="M361.58,-19.37C372.87,-19.05 379.68,-18.59 379.68,-18 379.68,-17.7 377.87,-17.43 374.57,-17.19"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="374.74,-13.7 364.6,-16.76 374.44,-20.69 374.74,-13.7"/>
-</a>
-</g>
-<text text-anchor="middle" x="458.8" y="-14.12" font-family="Times,serif" font-size="10.00">call4[1]@EvaluableExpression.go:227</text>
-</g>
-<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
-<g id="edge4" class="edge">
-<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
-<g id="a_edge4"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 2000,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
-<path fill="none" stroke="black" stroke-width="2" d="M358.01,-21.85C449.06,-22.19 537.93,-20.91 537.93,-18 537.93,-15.23 457.2,-13.93 370.79,-14.11"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="371.02,-10.61 361.03,-14.14 371.04,-17.61 371.02,-10.61"/>
-</a>
-</g>
-<text text-anchor="middle" x="617.05" y="-14.12" font-family="Times,serif" font-size="10.00">call4[2]@EvaluableExpression.go:194</text>
-</g>
-<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
-<g id="edge5" class="edge">
-<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
-<g id="a_edge5"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: null,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
-<path fill="none" stroke="black" stroke-width="2" d="M354.4,-23.26C506.27,-24.9 696.18,-23.14 696.18,-18 696.18,-13 516.87,-11.2 367.39,-12.61"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="367.39,-9.11 357.42,-12.71 367.46,-16.11 367.39,-9.11"/>
-</a>
-</g>
-<text text-anchor="middle" x="775.3" y="-14.12" font-family="Times,serif" font-size="10.00">call4[3]@EvaluableExpression.go:227</text>
-</g>
-<!-- govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage -->
-<g id="edge6" class="edge">
-<title>govaluate.EvaluableExpression.evaluateStage&#45;&gt;govaluate.EvaluableExpression.evaluateStage</title>
-<g id="a_edge6"><a xlink:title="{&#10; &#160;&#160;&#160;&quot;arguments&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;parameters&quot;: {},&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;stage&quot;: {}&#10; &#160;&#160;&#160;},&#10; &#160;&#160;&#160;&quot;result&quot;: {&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X1&quot;: 2001,&#10; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&quot;X2&quot;: null&#10; &#160;&#160;&#160;}&#10;}">
-<path fill="none" stroke="black" stroke-width="2" d="M350.76,-24.36C553.29,-27.56 854.43,-25.44 854.43,-18 854.43,-10.72 565.8,-8.53 363.64,-11.44"/>
-<polygon fill="black" stroke="black" stroke-width="2" points="363.73,-7.94 353.79,-11.59 363.84,-14.94 363.73,-7.94"/>
-</a>
-</g>
-<text text-anchor="middle" x="933.55" y="-14.12" font-family="Times,serif" font-size="10.00">call4[4]@EvaluableExpression.go:227</text>
 </g>
 </g>
 </svg>
