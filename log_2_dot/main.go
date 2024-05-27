@@ -13,7 +13,7 @@ type LogEntry struct {
 	CallingFunction string
 	CallingPosition string
 	Arguments       string
-	Results         string
+	Returns         string
 }
 
 func main() {
@@ -71,7 +71,7 @@ func parseLogEntry(line string) *LogEntry {
 		CallingFunction: matches[2],
 		CallingPosition: matches[3],
 		Arguments:       matches[4],
-		Results:         matches[5],
+		Returns:         matches[5],
 	}
 
 	return logEntry
