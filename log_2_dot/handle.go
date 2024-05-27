@@ -81,10 +81,16 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
                 //hideTooltip();
     		//});
 
-    		tooltip.addEventListener('mouseout', function() {
+			tooltip.addEventListener('mouseout', function(event) {
+			    // 只有当鼠标移出 tooltip 区域时,才隐藏 tooltip
+			    if (!tooltip.contains(event.relatedTarget)) {
+			        hideTooltip();
+			    }
+			});
+    		//tooltip.addEventListener('mouseout', function() {
     		    //isTooltipHovered = false;
     		    //hideTooltip();
-    		});
+    		//});
         });
 
         function showTooltip(text) {
