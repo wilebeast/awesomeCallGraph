@@ -45,7 +45,7 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
       		var links = svg.getElementsByTagName('a');
     		var tooltip = document.getElementById('tooltip');
     		var tooltipContent = document.getElementById('tooltipContent');
-    		var isTooltipHovered = false;
+    		//var isTooltipHovered = false;
 
       		for (var i = 0; i < links.length; i++) {
       		  var link = links[i];
@@ -59,12 +59,12 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
                   }
               });
 
-              link.addEventListener('mouseout', function() {
+              //link.addEventListener('mouseout', function() {
             	  // 只有当鼠标离开 tooltip 区域时,才隐藏 tooltip
-            	  if (!isTooltipHovered) {
-                	  hideTooltip();
-            	  }
-			  });
+            	  //if (!isTooltipHovered) {
+                	//  hideTooltip();
+            	  //}
+			  //});
 
       		  // 为每个 <a> 元素添加双击事件监听器
       		  link.addEventListener('dblclick', function() {
@@ -76,13 +76,14 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
       		    }
       		  });
       		}
-    		tooltip.addEventListener('mouseover', function() {
-    		    isTooltipHovered = true;
-    		});
+    		//tooltip.addEventListener('mouseover', function() {
+    		    //isTooltipHovered = true;
+                //hideTooltip();
+    		//});
 
     		tooltip.addEventListener('mouseout', function() {
-    		    isTooltipHovered = false;
-    		    hideTooltip();
+    		    //isTooltipHovered = false;
+    		    //hideTooltip();
     		});
         });
 
