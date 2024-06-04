@@ -1,0 +1,11 @@
+digraph G {
+    main [label="main()"];
+    main -> foo [label="call foo()"];
+    foo [label="foo()"];
+    foo -> bar [label="call bar()"];
+    bar [label="bar()"];
+    bar -> baz [label="call baz()"];
+    baz [label="baz()"];
+    baz -> foo [label="return to foo()"];
+    foo -> main [label="return to main()"];
+}

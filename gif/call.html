@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Viz.js Example</title>
+    <script src="https://unpkg.com/viz.js@2.1.2/viz.js"></script>
+</head>
+<body>
+<div id="graph"></div>
+
+<script>
+    // 定义 DOT 文件
+    const dotSource = `
+    digraph G {
+      main [label="main()"];
+      main -> foo [label="call foo()"];
+      foo [label="foo()"];
+      foo -> bar [label="call bar()"];
+      bar [label="bar()"];
+      bar -> baz [label="call baz()"];
+      baz [label="baz()"];
+      baz -> foo [label="return to foo()"];
+      foo -> main [label="return to main()"];
+    }
+    `;
+
+    // 使用 Viz.js 渲染动画
+    const viz = new Viz();
+    viz.renderSVGElement(dotSource)
+        .then(element => {
+            // 将生成的 SVG 元素添加到页面中
+            document.getElementById('graph').appendChild(element);
+
+            // 添加交互功能
+            let currentStep = 0;
+            const steps = element.getElementsByTagName('g');
+
+            // 单步执行函数
+            function nextStep() {
+                steps[currentStep].style.display = 'none';
+                currentStep++;
+                if (currentStep < steps.length) {
+                    steps[currentStep].style.display = 'inline';
+                }
+            }
+
+            // 添加控件
+            const playButton = document.createElement('button');
+            playButton.textContent = 'Play/Pause';
+            playButton.onclick = () => {
+                if (playButton.textContent === 'Play/Pause') {
+                    playButton.textContent = 'Pause';
+                    nextStepInterval = setInterval(nextStep, 1000);
+                } else {
+                    playButton.textContent = 'Play/Pause';
+                    clearInterval(nextStepInterval);
+                }
+            };
+            document.getElementById('graph').appendChild(playButton);
+
+            const stepButton = document.createElement('button');
+            stepButton.textContent = 'Next Step';
+            stepButton.onclick = nextStep;
+            document.getElementById('graph').appendChild(stepButton);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+</body>
+</html>
