@@ -2,11 +2,14 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
 )
 
-func handleRequest(w http.ResponseWriter, r *http.Request) {
+func handleShow(w http.ResponseWriter, r *http.Request) {
 	// 读取 svg 文件内容
 	logID := r.URL.Query().Get("logId")
 	svgContent, err := ioutil.ReadFile(logID + "_call_graph.svg")
@@ -118,4 +121,58 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 </html>
 `
 	fmt.Fprintf(w, html, svgContent)
+}
+
+func handleUpload(w http.ResponseWriter, r *http.Request) {
+	// 检查请求方法是否为 POST
+	if r.Method != http.MethodPost {
+		// 返回 HTML 表单代码
+		formHTML := `
+		<!DOCTYPE html>
+		<html>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Upload</button>
+        </form>
+		<html>
+        `
+		fmt.Fprintf(w, "%s", formHTML)
+		return
+	}
+
+	// 解析表单数据
+	if err := r.ParseMultipartForm(32 << 20); err != nil { // 32 MB 最大文件大小
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// 获取上传的文件
+	file, handler, err := r.FormFile("file")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	defer file.Close()
+
+	// 创建保存文件的目录
+	uploadDir := "uploads"
+	if _, err := os.Stat(uploadDir); os.IsNotExist(err) {
+		err = os.Mkdir(uploadDir, 0755)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+
+	// 保存文件
+	filePath := filepath.Join(uploadDir, handler.Filename)
+	f, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer f.Close()
+	io.Copy(f, file)
+
+	fmt.Fprintf(w, "File uploaded: %s", handler.Filename)
 }

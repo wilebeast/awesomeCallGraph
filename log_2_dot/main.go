@@ -61,8 +61,9 @@ func main() {
 	convertDotToSvg()
 
 	// 启动 Web 服务
-	http.HandleFunc("/", handleRequest)
-	fmt.Println("Starting web server on http://localhost:8080?logId=" + logId)
+	http.HandleFunc("/show", handleShow)
+	http.HandleFunc("/upload", handleUpload)
+	fmt.Println("Starting web server on http://localhost:8080/show?logId=" + logId)
 	http.ListenAndServe(":8080", nil)
 
 }
