@@ -26,7 +26,7 @@ func main() {
 
 func log2Svg(logName string) {
 	// 读取日志文件
-	file, err := os.Open("./upload/" + logName + ".txt")
+	file, err := os.Open("./uploads/" + logName + ".txt")
 	if err != nil {
 		panic(err)
 	}
