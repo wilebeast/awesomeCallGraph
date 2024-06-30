@@ -16,9 +16,18 @@ type LogEntry struct {
 	Returns         string
 }
 
+var (
+	logId = ""
+)
+
 func main() {
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: go run main.go logId")
+		return
+	}
+	logId = os.Args[1]
 	// 读取日志文件
-	file, err := os.Open("./log_2_dot/logs.txt")
+	file, err := os.Open("./" + logId + ".txt")
 	if err != nil {
 		panic(err)
 	}
@@ -53,7 +62,7 @@ func main() {
 
 	// 启动 Web 服务
 	http.HandleFunc("/", handleRequest)
-	fmt.Println("Starting web server on http://localhost:8080")
+	fmt.Println("Starting web server on http://localhost:8080?logId=" + logId)
 	http.ListenAndServe(":8080", nil)
 
 }

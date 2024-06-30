@@ -8,7 +8,7 @@ import (
 
 func outputDotFile(callGraph map[string]map[string][]LogEntry) {
 	// 打开输出文件
-	file, err := os.Create("call_graph.dot")
+	file, err := os.Create(logId + "_call_graph.dot")
 	if err != nil {
 		panic(err)
 	}
@@ -44,7 +44,7 @@ func convertDotToSvg() {
 	}
 
 	// 执行 dot 命令将 dot 文件转换为 svg 文件
-	cmd := exec.Command("dot", "-Tsvg", "call_graph.dot", "-o", "call_graph.svg")
+	cmd := exec.Command("dot", "-Tsvg", logId+"_call_graph.dot", "-o", logId+"_call_graph.svg")
 	err = cmd.Run()
 	if err != nil {
 		fmt.Println("Failed to convert DOT file to SVG:", err)

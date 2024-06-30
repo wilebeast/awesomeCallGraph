@@ -8,7 +8,8 @@ import (
 
 func handleRequest(w http.ResponseWriter, r *http.Request) {
 	// 读取 svg 文件内容
-	svgContent, err := ioutil.ReadFile("call_graph.svg")
+	logID := r.URL.Query().Get("logId")
+	svgContent, err := ioutil.ReadFile(logID + "_call_graph.svg")
 	if err != nil {
 		http.Error(w, "Failed to read SVG file", http.StatusInternalServerError)
 		return
