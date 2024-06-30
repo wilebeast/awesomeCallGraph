@@ -7,12 +7,13 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func handleShow(w http.ResponseWriter, r *http.Request) {
 	// 读取 svg 文件内容
-	logID := r.URL.Query().Get("logId")
-	svgContent, err := ioutil.ReadFile(logID + "_call_graph.svg")
+	logName := r.URL.Query().Get("logName")
+	svgContent, err := ioutil.ReadFile(logName + "_call_graph.svg")
 	if err != nil {
 		http.Error(w, "Failed to read SVG file", http.StatusInternalServerError)
 		return
@@ -174,5 +175,8 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	defer f.Close()
 	io.Copy(f, file)
 
+	// 提取不带后缀的文件名
+	fileName := strings.TrimSuffix(handler.Filename, filepath.Ext(handler.Filename))
+	log2Svg(fileName)
 	fmt.Fprintf(w, "File uploaded: %s", handler.Filename)
 }

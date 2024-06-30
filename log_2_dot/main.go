@@ -16,18 +16,17 @@ type LogEntry struct {
 	Returns         string
 }
 
-var (
-	logId = ""
-)
-
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("Usage: go run main.go logId")
-		return
-	}
-	logId = os.Args[1]
+	// 启动 Web 服务
+	http.HandleFunc("/show", handleShow)
+	http.HandleFunc("/upload", handleUpload)
+	fmt.Println("Starting web server on http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
+}
+
+func log2Svg(logName string) {
 	// 读取日志文件
-	file, err := os.Open("./" + logId + ".txt")
+	file, err := os.Open("./upload/" + logName + ".txt")
 	if err != nil {
 		panic(err)
 	}
@@ -56,16 +55,9 @@ func main() {
 	}
 
 	// 输出 dot 文件
-	outputDotFile(callGraph)
+	outputDotFile(logName, callGraph)
 	// 将 dot 文件转换为 svg 文件
-	convertDotToSvg()
-
-	// 启动 Web 服务
-	http.HandleFunc("/show", handleShow)
-	http.HandleFunc("/upload", handleUpload)
-	fmt.Println("Starting web server on http://localhost:8080/show?logId=" + logId)
-	http.ListenAndServe(":8080", nil)
-
+	convertDotToSvg(logName)
 }
 
 func parseLogEntry(line string) *LogEntry {
