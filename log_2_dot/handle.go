@@ -133,7 +133,7 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 		<html>
         <form action="/upload" method="POST" enctype="multipart/form-data">
             <input type="file" name="file">
-            <button type="submit">Upload</button>
+            <button type="submit">show call graph</button>
         </form>
 		<html>
         `
@@ -178,5 +178,9 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	// 提取不带后缀的文件名
 	fileName := strings.TrimSuffix(handler.Filename, filepath.Ext(handler.Filename))
 	log2Svg(fileName)
-	fmt.Fprintf(w, "File uploaded: %s", handler.Filename)
+	// 构建重定向 URL
+	redirectURL := fmt.Sprintf("http://localhost:8080/show?logName=%s", fileName)
+	// 重定向到新的 URL
+	http.Redirect(w, r, redirectURL, http.StatusSeeOther)
+	//fmt.Fprintf(w, "File uploaded: %s", handler.Filename)
 }
