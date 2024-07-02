@@ -19,7 +19,7 @@ type LogEntry struct {
 func main() {
 	// 启动 Web 服务
 	http.HandleFunc("/show", handleShow)
-	http.HandleFunc("/upload", handleUpload)
+	http.HandleFunc("/file", handleUpload)
 	http.HandleFunc("/", handleUpload)
 	fmt.Println("Starting web server on http://localhost:8080")
 	http.ListenAndServe(":8080", nil)
