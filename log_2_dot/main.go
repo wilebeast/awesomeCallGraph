@@ -69,9 +69,14 @@ func parseLogEntry(line string) *LogEntry {
 		return nil
 	}
 
+	callingFunction := matches[2]
+	// 去除 CallingFunction 末尾的 ".funcN"
+	callingFunctionRegex := regexp.MustCompile(`\.func\d+$`)
+	callingFunction = callingFunctionRegex.ReplaceAllString(callingFunction, "")
+
 	logEntry := &LogEntry{
 		CalledFunction:  matches[1],
-		CallingFunction: matches[2],
+		CallingFunction: callingFunction,
 		CallingPosition: matches[3],
 		Arguments:       matches[4],
 		Returns:         matches[5],
