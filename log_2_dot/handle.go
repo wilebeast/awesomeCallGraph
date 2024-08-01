@@ -93,7 +93,7 @@ func handleShow(w http.ResponseWriter, r *http.Request) {
       		      // 将内容复制到剪贴板
       		      copyToClipboard(tooltipText);
       		    }
-				if (this.querySelector('path').style.stroke == 'black') {
+				if (this.querySelector('path').style.stroke != 'green') {
 					this.querySelector('path').style.stroke = 'green';
 					this.querySelector('path').style.strokeWidth = '10';
 				} else {
