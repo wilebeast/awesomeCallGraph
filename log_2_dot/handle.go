@@ -38,10 +38,24 @@ func handleShow(w http.ResponseWriter, r *http.Request) {
     </style>
     <script>
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-            }, function(err) {
-                console.error('Async: Could not copy text: ', err);
-            });
+			if (navigator.clipboard) {
+            	navigator.clipboard.writeText(text).then(function() {
+            	}, function(err) {
+                	console.error('Async: Could not copy text: ', err);
+					fallbackCopyToClipboard(text);
+            	});
+			} else {
+				fallbackCopyToClipboard(text);
+			}
+        }
+
+        function fallbackCopyToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -77,7 +91,7 @@ func handleShow(w http.ResponseWriter, r *http.Request) {
       		    var tooltipText = this.getAttribute('xlink:title');
       		    if (tooltipText) {
       		      // 将内容复制到剪贴板
-      		      navigator.clipboard.writeText(tooltipText);
+      		      copyToClipboard(tooltipText);
       		    }
       		  });
       		}
