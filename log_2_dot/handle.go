@@ -92,8 +92,14 @@ func handleShow(w http.ResponseWriter, r *http.Request) {
       		    if (tooltipText) {
       		      // 将内容复制到剪贴板
       		      copyToClipboard(tooltipText);
-				  this.querySelector('path').style.stroke = 'green';
       		    }
+				if (this.querySelector('path').style.stroke == 'black') {
+					this.querySelector('path').style.stroke = 'green';
+					this.querySelector('path').style.strokeWidth = '10';
+				} else {
+					this.querySelector('path').style.stroke = 'black';
+					this.querySelector('path').style.strokeWidth = '4';
+				}
       		  });
       		}
     		//tooltip.addEventListener('mouseover', function() {
