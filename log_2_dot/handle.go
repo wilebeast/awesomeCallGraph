@@ -92,6 +92,7 @@ func handleShow(w http.ResponseWriter, r *http.Request) {
       		    if (tooltipText) {
       		      // 将内容复制到剪贴板
       		      copyToClipboard(tooltipText);
+				  this.querySelector('path').style.stroke = 'green';
       		    }
       		  });
       		}
