@@ -200,7 +200,8 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	fileName := strings.TrimSuffix(handler.Filename, filepath.Ext(handler.Filename))
 	log2Svg(fileName)
 	// 构建重定向 URL
-	redirectURL := fmt.Sprintf("http://"+getIpv4()+":8080/show?logName=%s", fileName)
+	// redirectURL := fmt.Sprintf("http://"+getIpv4()+":8180/show?logName=%s", fileName)
+	redirectURL := fmt.Sprintf("http://"+"localhost:8180/show?logName=%s", fileName)
 	// 重定向到新的 URL
 	http.Redirect(w, r, redirectURL, http.StatusSeeOther)
 	//fmt.Fprintf(w, "File uploaded: %s", handler.Filename)

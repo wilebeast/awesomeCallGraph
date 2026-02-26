@@ -30,3 +30,31 @@ func Test_parseLogEntry(t *testing.T) {
 		})
 	}
 }
+
+func Test_parseLogEntry_geth(t *testing.T) {
+	line1 := `INFO [02-26|19:58:57.263] func_trace_log/log_trace.go:119 "(json/encode.go:507 (json.addrTextMarshalerEncoder)) -> (common/types.go:337 (common.Address.MarshalText)) arguments={} result={\"X1\":\"MHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\",\"X2\":null}"`
+	got1 := parseLogEntry(line1)
+	want1 := &LogEntry{
+		CalledFunction:  "common.Address.MarshalText",
+		CallingFunction: "json.addrTextMarshalerEncoder",
+		CallingPosition: "json/encode.go:507",
+		Arguments:       "{}",
+		Returns:         "{\"X1\":\"MHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\",\"X2\":null}",
+	}
+	if !reflect.DeepEqual(got1, want1) {
+		t.Fatalf("parseLogEntry(geth line1) = %v, want %v", got1, want1)
+	}
+
+	line2 := `INFO [02-26|19:58:57.262] func_trace_log/log_trace.go:119 "(utils/flags.go:1653 (utils.SetEthConfig)) -> (utils/flags.go:1375 (utils.setEtherbase)) arguments= result={}"`
+	got2 := parseLogEntry(line2)
+	want2 := &LogEntry{
+		CalledFunction:  "utils.setEtherbase",
+		CallingFunction: "utils.SetEthConfig",
+		CallingPosition: "utils/flags.go:1653",
+		Arguments:       "{}",
+		Returns:         "{}",
+	}
+	if !reflect.DeepEqual(got2, want2) {
+		t.Fatalf("parseLogEntry(geth line2) = %v, want %v", got2, want2)
+	}
+}
