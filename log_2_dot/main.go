@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"strings"
 )
 
 type LogEntry struct {
@@ -17,8 +18,17 @@ type LogEntry struct {
 }
 
 func main() {
+	// 启动 Web 服务
+	http.HandleFunc("/show", handleShow)
+	http.HandleFunc("/file", handleUpload)
+	http.HandleFunc("/", handleUpload)
+	fmt.Println("Starting web server on http://localhost:8180")
+	http.ListenAndServe(":8180", nil)
+}
+
+func log2Svg(logName string) {
 	// 读取日志文件
-	file, err := os.Open("./log_2_dot/logs.txt")
+	file, err := os.Open("./uploads/" + logName + ".log")
 	if err != nil {
 		panic(err)
 	}
@@ -47,32 +57,32 @@ func main() {
 	}
 
 	// 输出 dot 文件
-	outputDotFile(callGraph)
+	outputDotFile(logName, callGraph)
 	// 将 dot 文件转换为 svg 文件
-	convertDotToSvg()
-
-	// 启动 Web 服务
-	http.HandleFunc("/", handleRequest)
-	fmt.Println("Starting web server on http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
-
+	convertDotToSvg(logName)
 }
 
 func parseLogEntry(line string) *LogEntry {
-	// 定义正则表达式匹配日志格式
-	re := regexp.MustCompile(`Calling (.+) from (.+) at (.+), arguments:(.+), returns:(.+)`)
-	matches := re.FindStringSubmatch(line)
-	if len(matches) != 6 {
-		return nil
-	}
+	reNew := regexp.MustCompile(`^.*\s+"\(([^:]+):(\d+)\s+\((.+?)\)\)\s*->\s*\(([^:]+):(\d+)\s+\((.+?)\)\)\s+arguments=(.*?)\s+result=(.*)"$`)
+	if matches := reNew.FindStringSubmatch(line); len(matches) == 9 {
+		arguments := strings.TrimSpace(matches[7])
+		returns := strings.TrimSpace(matches[8])
+		if arguments == "" {
+			arguments = "{}"
+		}
+		if returns == "" {
+			returns = "{}"
+		}
+		arguments = strings.ReplaceAll(arguments, `\"`, `"`)
+		returns = strings.ReplaceAll(returns, `\"`, `"`)
 
-	logEntry := &LogEntry{
-		CalledFunction:  matches[1],
-		CallingFunction: matches[2],
-		CallingPosition: matches[3],
-		Arguments:       matches[4],
-		Returns:         matches[5],
+		return &LogEntry{
+			CalledFunction:  matches[6],
+			CallingFunction: matches[3],
+			CallingPosition: matches[1] + ":" + matches[2],
+			Arguments:       arguments,
+			Returns:         returns,
+		}
 	}
-
-	return logEntry
+	return nil
 }

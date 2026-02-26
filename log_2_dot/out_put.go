@@ -6,9 +6,9 @@ import (
 	"os/exec"
 )
 
-func outputDotFile(callGraph map[string]map[string][]LogEntry) {
+func outputDotFile(logName string, callGraph map[string]map[string][]LogEntry) {
 	// 打开输出文件
-	file, err := os.Create("call_graph.dot")
+	file, err := os.Create(logName + "_call_graph.dot")
 	if err != nil {
 		panic(err)
 	}
@@ -23,7 +23,7 @@ func outputDotFile(callGraph map[string]map[string][]LogEntry) {
 		for calledFunction, logEntries := range calledFunctions {
 			label := fmt.Sprintf("call%d", len(logEntries))
 			for i, logEntry := range logEntries {
-				tooltip := marshal2String(map[string]interface{}{"arguments": unmarshal2map(logEntry.Arguments), "returns": unmarshal2map(logEntry.Returns)})
+				tooltip := marshal2String(map[string]interface{}{"0": map[string]string{"caller": logEntry.CallingFunction, "callee": logEntry.CalledFunction}, "arguments": unmarshal2map(logEntry.Arguments), "returns": unmarshal2map(logEntry.Returns)})
 				//tooltip := fmt.Sprintf("%s", json.Marshal(map[string]interface{}{"arguments": logEntry.Arguments, "result": logEntry.Returns}))
 				fmt.Fprintf(file, `"%s" -> "%s" [label="%s[%d]@%s", tooltip=%s]`+"\n",
 					callingFunction, calledFunction, label, i+1, logEntry.CallingPosition, marshal2String(tooltip))
@@ -35,7 +35,7 @@ func outputDotFile(callGraph map[string]map[string][]LogEntry) {
 	fmt.Fprintln(file, "}")
 }
 
-func convertDotToSvg() {
+func convertDotToSvg(logName string) {
 	// 检查是否安装了 Graphviz
 	_, err := exec.LookPath("dot")
 	if err != nil {
@@ -44,7 +44,7 @@ func convertDotToSvg() {
 	}
 
 	// 执行 dot 命令将 dot 文件转换为 svg 文件
-	cmd := exec.Command("dot", "-Tsvg", "call_graph.dot", "-o", "call_graph.svg")
+	cmd := exec.Command("dot", "-Tsvg", logName+"_call_graph.dot", "-o", logName+"_call_graph.svg")
 	err = cmd.Run()
 	if err != nil {
 		fmt.Println("Failed to convert DOT file to SVG:", err)

@@ -1,0 +1,60 @@
+package main
+
+import (
+	"reflect"
+	"testing"
+)
+
+func Test_parseLogEntry(t *testing.T) {
+	type args struct {
+		line string
+	}
+	tests := []struct {
+		name string
+		args args
+		want *LogEntry
+	}{
+		{
+			name: "test",
+			args: args{
+				line: "Info 2024-05-24 14:31:01.446+08:00 ellen.go:40 0.0.0.0 webarch.shark.inner_antispam 20240524143100A7DA9B0546499DBE9B44 default single_dc boe 592267375686308403 _podname=dp-31b609043c-cb56f9866-h4mg5 _ipv6=2605:340:cd50:2000:c4c0:d2bd:dffe:c983 _language=go access=wanghuanlin_test __context=default _flags=1 __source= _taskname=webarch.shark.inner_antispam __docid=4190612819219965052 event=- _batchid=7e365b3cf1eb4b4db8af37cda19965390000000000000152  _msg=Calling writeAsyncLog from ruleplatform.initAsyncLogWriter.func1 at manager.go:575, arguments: {\"content\":{\"params\":null,\"result\":null,\"scenes\":null,\"event\":\"\",\"decision_scene_id\":\"\",\"decision_scene_priority\":0,\"sync_decision_scene_id\":\"\",\"sync_decision_scene_priority\":0,\"async_decision_scene_id\":\"\",\"async_decision_scene_priority\":0,\"server_time\":0,\"event_data\":\"\",\"sentry_context\":null,\"event_operation\":\"\",\"version\":2,\"access_detailed_content\":{\"detailed_content_v2\":[{\"params\":{\"\":\"\",\"IDC\":\"boe\",\"__caller\":\"\",\"__dataQualityBizReqTime\":1716532261,\"__dataQualityMsgId\":\"20240524143100A7DA9B0546499DBE9B44:ZlAkMESGFSELrjoumfFD\",\"__dataQualityMsgTime\":1716532261,\"__decision_scene_exec_config\":{\"status\":1,\"rate\":10000,\"canary_mode\":0,\"punish_mode\":0},\"__factor_exec_time\":{\"f_78861\":{\"self\":26,\"total\":55,\"start_time\":1716532261347008,\"level\":\"0\"}},\"__grey_task_hit_version\":{\"1000\":1,\"2000\":1},\"__grey_version_no_need_send_audit_rule\":{},\"__layered_async_dec_diff\":0,\"__layered_async_second_dec_diff\":0,\"__layered_decision_detail\":{\"exec_status\":1,\"identify_layered_final_result\":{\"layer\":0,\"inner_final_result\":{\"scene_id\":\"\",\"rule_id\":\"\",\"decision\":\"MISS\",\"second_decision\":\"\",\"decision_priority\":0},\"final_decision_scene_id\":\"\",\"final_decision_rule_id\":\"\",\"final_punish_scene_id\":\"\",\"final_punish_rule_id\":\"\",\"final_decision\":\"MISS\",\"final_second_decision\":\"\",\"punish_configs\":null,\"punishes\":null},\"decision_layered_final_result\":{\"layer\":1,\"inner_final_result\":{\"scene_id\":\"\",\"rule_id\":\"\",\"decision\":\"MISS\",\"second_decision\":\"\",\"decision_priority\":0},\"final_decision_scene_id\":\"\",\"final_decision_rule_id\":\"\",\"final_punish_scene_id\":\"\",\"final_punish_rule_id\":\"\",\"final_decision\":\"MISS\",\"final_second_decision\":\"\",\"punish_configs\":null,\"punishes\":null},\"tmp_details\":{\"decision_scene_hit_detail\":{},\"scene_hit_tag_mapping\":{\"113999\":{}}}},\"__layered_exec_status\":1,\"__layered_inner_dec_diff\":0,\"__layered_inner_second_dec_diff\":0,\"__layered_punish_diff\":0,\"__process_timeline\":{\"anti_call_inner\":1716532261337,\"anti_start_check\":1716532261102,\"inner_start_check\":1716532261346,\"inner_write_log\":1716532261348},\"__rule_exec_time\":{},\"__shark_decision_rule_expr\":\"\",\"__shark_final_decision_info\":{\"final_decision\":\"MISS\",\"final_decision_config\":\"\",\"final_punish_configs\":null},\"aid\":-6,\"comment_id\":\"wanghuanlin1\",\"did\":-6,\"docking_type__\":\"RPC\",\"event\":\"wanghuanlin_test\",\"eventTime\":0,\"event_time\":0,\"f_78861\":\"wanghuanlin1\",\"iid\":-6,\"is_login\":false,\"log_id\":\"20240524143100A7DA9B0546499DBE9B44\",\"namespace_id\":13,\"shark_request_id\":\"021716532261103fdbddc0100fff003ffffffff0000040384ee67\",\"uid\":1238761233,\"ut\":12},\"result\":{},\"scenes\":[{\"scene_id\":\"3675976609414479\",\"decision_rule_id\":\"\",\"decision_rule_priority\":0,\"decisions\":\"\",\"decision_config\":\"\",\"rules\":[{\"rule_id\":\"199012\",\"hit\":false,\"time_cost\":0,\"start_time\":0,\"end_time\":0,\"priority\":0,\"error\":\"\",\"decisions\":\"MISS\",\"decision_config\":\"\",\"detailed_rule_grey_strategy\":null,\"identification_tags\":null,\"execution_module\":0,\"punishes\":null,\"miss_type\":5},{\"rule_id\":\"199012\",\"hit\":false,\"time_cost\":0,\"start_time\":0,\"end_time\":0,\"priority\":0,\"error\":\"\",\"decisions\":\"MISS\",\"decision_config\":\"\",\"detailed_rule_grey_strategy\":null,\"identification_tags\":null,\"execution_module\":0,\"punishes\":null,\"miss_type\":5}],\"execution_modules\":null,\"layer\":0,\"scene_condition_hit\":false}],\"event\":\"wanghuanlin_test\",\"decision_scene_id\":\"\",\"decision_scene_priority\":0,\"sync_decision_scene_id\":\"\",\"sync_decision_scene_priority\":0,\"async_decision_scene_id\":\"\",\"async_decision_scene_priority\":0,\"server_time\":1716532261,\"event_data\":\"{\\\"ori_params\\\":{\\\"\\\":\\\"\\\",\\\"IDC\\\":\\\"boe\\\",\\\"__caller\\\":\\\"\\\",\\\"__dataQualityBizReqTime\\\":1716532261,\\\"__dataQualityMsgId\\\":\\\"20240524143100A7DA9B0546499DBE9B44:ZlAkMESGFSELrjoumfFD\\\",\\\"__dataQualityMsgTime\\\":1716532261,\\\"__decision_scene_exec_config\\\":{\\\"status\\\":1,\\\"rate\\\":10000,\\\"canary_mode\\\":0,\\\"punish_mode\\\":0},\\\"__factor_exec_time\\\":{\\\"f_78861\\\":{\\\"self\\\":26,\\\"total\\\":55,\\\"start_time\\\":1716532261347008,\\\"level\\\":\\\"0\\\"}},\\\"__grey_task_hit_version\\\":{\\\"1000\\\":1,\\\"2000\\\":1},\\\"__grey_version_no_need_send_audit_rule\\\":{},\\\"__layered_async_dec_diff\\\":0,\\\"__layered_async_second_dec_diff\\\":0,\\\"__layered_decision_detail\\\":{\\\"exec_status\\\":1,\\\"identify_layered_final_result\\\":{\\\"layer\\\":0,\\\"inner_final_result\\\":{\\\"scene_id\\\":\\\"\\\",\\\"rule_id\\\":\\\"\\\",\\\"decision\\\":\\\"MISS\\\",\\\"second_decision\\\":\\\"\\\",\\\"decision_priority\\\":0},\\\"final_decision_scene_id\\\":\\\"\\\",\\\"final_decision_rule_id\\\":\\\"\\\",\\\"final_punish_scene_id\\\":\\\"\\\",\\\"final_punish_rule_id\\\":\\\"\\\",\\\"final_decision\\\":\\\"MISS\\\",\\\"final_second_decision\\\":\\\"\\\",\\\"punish_configs\\\":null,\\\"punishes\\\":null},\\\"decision_layered_final_result\\\":{\\\"layer\\\":1,\\\"inner_final_result\\\":{\\\"scene_id\\\":\\\"\\\",\\\"rule_id\\\":\\\"\\\",\\\"decision\\\":\\\"MISS\\\",\\\"second_decision\\\":\\\"\\\",\\\"decision_priority\\\":0},\\\"final_decision_scene_id\\\":\\\"\\\",\\\"final_decision_rule_id\\\":\\\"\\\",\\\"final_punish_scene_id\\\":\\\"\\\",\\\"final_punish_rule_id\\\":\\\"\\\",\\\"final_decision\\\":\\\"MISS\\\",\\\"final_second_decision\\\":\\\"\\\",\\\"punish_configs\\\":null,\\\"punishes\\\":null},\\\"tmp_details\\\":{\\\"decision_scene_hit_detail\\\":{},\\\"scene_hit_tag_mapping\\\":{\\\"113999\\\":{}}}},\\\"__layered_exec_status\\\":1,\\\"__layered_inner_dec_diff\\\":0,\\\"__layered_inner_second_dec_diff\\\":0,\\\"__layered_punish_diff\\\":0,\\\"__process_timeline\\\":{\\\"anti_call_inner\\\":1716532261337,\\\"anti_start_check\\\":1716532261102,\\\"inner_start_check\\\":1716532261346},\\\"__ruleplatform_not_write_in_execute\\\":true,\\\"__shark_final_decision_info\\\":{\\\"final_decision\\\":\\\"MISS\\\",\\\"final_decision_config\\\":\\\"\\\",\\\"final_punish_configs\\\":null},\\\"aid\\\":-6,\\\"comment_id\\\":\\\"wanghuanlin1\\\",\\\"did\\\":-6,\\\"docking_type__\\\":\\\"RPC\\\",\\\"event\\\":\\\"wanghuanlin_test\\\",\\\"eventTime\\\":0,\\\"event_time\\\":0,\\\"f_78861\\\":\\\"wanghuanlin1\\\",\\\"iid\\\":-6,\\\"is_login\\\":false,\\\"log_id\\\":\\\"20240524143100A7DA9B0546499DBE9B44\\\",\\\"namespace_id\\\":13,\\\"shark_request_id\\\":\\\"021716532261103fdbddc0100fff003ffffffff0000040384ee67\\\",\\\"uid\\\":1238761233,\\\"ut\\\":12},\\\"global_register\\\":[{\\\"key\\\":\\\"f_78861\\\",\\\"val\\\":\\\"wanghuanlin1\\\",\\\"type\\\":{\\\"name\\\":\\\"string\\\",\\\"flags\\\":6},\\\"num_flag\\\":false}],\\\"expression_collection\\\":[{\\\"expression\\\":\\\"f_78861==\\\\\\\"wanghuanlin\\\\\\\"\\\",\\\"expect_type\\\":{\\\"name\\\":\\\"bool\\\",\\\"flags\\\":3},\\\"result_type\\\":{\\\"name\\\":\\\"bool\\\",\\\"flags\\\":3},\\\"result\\\":false,\\\"err_msg\\\":\\\"\\\",\\\"compile_flag\\\":null,\\\"num_flag\\\":false,\\\"use_govaluate\\\":false},{\\\"expression\\\":\\\"f_78861==\\\\\\\"wanghuanlin\\\\\\\"\\\",\\\"expect_type\\\":{\\\"name\\\":\\\"bool\\\",\\\"flags\\\":3},\\\"result_type\\\":{\\\"name\\\":\\\"bool\\\",\\\"flags\\\":3},\\\"result\\\":false,\\\"err_msg\\\":\\\"\\\",\\\"compile_flag\\\":null,\\\"num_flag\\\":false,\\\"use_govaluate\\\":false}]}\",\"sentry_context\":null,\"event_operation\":\"MISS\",\"version\":0,\"access_detailed_content\":null,\"sync_access_detailed_content\":null,\"double_run_content\":{\"scenes\":null}}],\"access\":\"wanghuanlin_test\",\"access_decision\":\"\",\"access_secondary_decision\":null,\"decision_event\":\"\",\"decision_event_id\":0,\"decision_namespace_id\":0,\"biz_line_id\":0,\"decision_rule_id\":null,\"decision_rule_name\":null,\"decision_scene_id\":null},\"sync_access_detailed_content\":null,\"double_run_content\":{\"scenes\":null}},\"shortcutWriters\":null,\"writer\":{}}, returns:{\"X1\":null}",
+			},
+			want: nil,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := parseLogEntry(tt.args.line); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("parseLogEntry() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_parseLogEntry_geth(t *testing.T) {
+	line1 := `INFO [02-26|19:58:57.263] func_trace_log/log_trace.go:119 "(json/encode.go:507 (json.addrTextMarshalerEncoder)) -> (common/types.go:337 (common.Address.MarshalText)) arguments={} result={\"X1\":\"MHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\",\"X2\":null}"`
+	got1 := parseLogEntry(line1)
+	want1 := &LogEntry{
+		CalledFunction:  "common.Address.MarshalText",
+		CallingFunction: "json.addrTextMarshalerEncoder",
+		CallingPosition: "json/encode.go:507",
+		Arguments:       "{}",
+		Returns:         "{\"X1\":\"MHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\",\"X2\":null}",
+	}
+	if !reflect.DeepEqual(got1, want1) {
+		t.Fatalf("parseLogEntry(geth line1) = %v, want %v", got1, want1)
+	}
+
+	line2 := `INFO [02-26|19:58:57.262] func_trace_log/log_trace.go:119 "(utils/flags.go:1653 (utils.SetEthConfig)) -> (utils/flags.go:1375 (utils.setEtherbase)) arguments= result={}"`
+	got2 := parseLogEntry(line2)
+	want2 := &LogEntry{
+		CalledFunction:  "utils.setEtherbase",
+		CallingFunction: "utils.SetEthConfig",
+		CallingPosition: "utils/flags.go:1653",
+		Arguments:       "{}",
+		Returns:         "{}",
+	}
+	if !reflect.DeepEqual(got2, want2) {
+		t.Fatalf("parseLogEntry(geth line2) = %v, want %v", got2, want2)
+	}
+}

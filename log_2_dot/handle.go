@@ -2,13 +2,18 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
 )
 
-func handleRequest(w http.ResponseWriter, r *http.Request) {
+func handleShow(w http.ResponseWriter, r *http.Request) {
 	// 读取 svg 文件内容
-	svgContent, err := ioutil.ReadFile("call_graph.svg")
+	logName := r.URL.Query().Get("logName")
+	svgContent, err := ioutil.ReadFile(logName + "_call_graph.svg")
 	if err != nil {
 		http.Error(w, "Failed to read SVG file", http.StatusInternalServerError)
 		return
@@ -33,10 +38,24 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
     </style>
     <script>
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-            }, function(err) {
-                console.error('Async: Could not copy text: ', err);
-            });
+			if (navigator.clipboard) {
+            	navigator.clipboard.writeText(text).then(function() {
+            	}, function(err) {
+                	console.error('Async: Could not copy text: ', err);
+					fallbackCopyToClipboard(text);
+            	});
+			} else {
+				fallbackCopyToClipboard(text);
+			}
+        }
+
+        function fallbackCopyToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -72,8 +91,15 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
       		    var tooltipText = this.getAttribute('xlink:title');
       		    if (tooltipText) {
       		      // 将内容复制到剪贴板
-      		      navigator.clipboard.writeText(tooltipText);
+      		      copyToClipboard(tooltipText);
       		    }
+				if (this.querySelector('path').style.stroke != 'green') {
+					this.querySelector('path').style.stroke = 'green';
+					this.querySelector('path').style.strokeWidth = '10';
+				} else {
+					this.querySelector('path').style.stroke = 'black';
+					this.querySelector('path').style.strokeWidth = '4';
+				}
       		  });
       		}
     		//tooltip.addEventListener('mouseover', function() {
@@ -117,4 +143,66 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 </html>
 `
 	fmt.Fprintf(w, html, svgContent)
+}
+
+func handleUpload(w http.ResponseWriter, r *http.Request) {
+	// 检查请求方法是否为 POST
+	if r.Method != http.MethodPost {
+		// 返回 HTML 表单代码
+		formHTML := `
+		<!DOCTYPE html>
+		<html>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">show call graph</button>
+        </form>
+		<html>
+        `
+		fmt.Fprintf(w, "%s", formHTML)
+		return
+	}
+
+	// 解析表单数据
+	if err := r.ParseMultipartForm(32 << 20); err != nil { // 32 MB 最大文件大小
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// 获取上传的文件
+	file, handler, err := r.FormFile("file")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	defer file.Close()
+
+	// 创建保存文件的目录
+	uploadDir := "uploads"
+	if _, err := os.Stat(uploadDir); os.IsNotExist(err) {
+		err = os.Mkdir(uploadDir, 0755)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+
+	// 保存文件
+	filePath := filepath.Join(uploadDir, handler.Filename)
+	f, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer f.Close()
+	io.Copy(f, file)
+
+	// 提取不带后缀的文件名
+	fileName := strings.TrimSuffix(handler.Filename, filepath.Ext(handler.Filename))
+	log2Svg(fileName)
+	// 构建重定向 URL
+	// redirectURL := fmt.Sprintf("http://"+getIpv4()+":8180/show?logName=%s", fileName)
+	redirectURL := fmt.Sprintf("http://"+"localhost:8180/show?logName=%s", fileName)
+	// 重定向到新的 URL
+	http.Redirect(w, r, redirectURL, http.StatusSeeOther)
+	//fmt.Fprintf(w, "File uploaded: %s", handler.Filename)
 }
